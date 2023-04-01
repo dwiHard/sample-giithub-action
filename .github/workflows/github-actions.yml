@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        java: [ 11, 12, 13 ]
+        java: [ 8, 11 ]
     name: Java ${{ matrix.java }} compile
     steps:
       - name: Checkout Source Code
@@ -19,7 +19,8 @@ jobs:
           java-package: jdk
           java-version: ${{ matrix.java }}
       - name: Compile the Project
-        working-directory: github-actions-java-maven
+#        if other directory is used
+#        working-directory: github-actions-java-maven
         run: mvn clean compile
 
   build:
@@ -41,10 +42,12 @@ jobs:
           java-version: '11'
           java-package: jdk
       - name: Build and test project
-        working-directory: sample-giithub-action
+#        working-directory: sample-giithub-action
         run: mvn package assembly:single
       - name: Upload Maven build artifact
         uses: actions/upload-artifact@v2
         with:
           name: artifact.jar
-          path: sample-giithub-action/target/sample-giithub-action.jar
+          path: target/sample-giithub-action.jar
+#          if other directory is used
+#          path: sample-giithub-action/target/sample-giithub-action.jar
