@@ -20,7 +20,7 @@ jobs:
           java-version: ${{ matrix.java }}
       - name: Compile the Project
 #        if other directory is used
-        working-directory: sample-giithub-action
+#        working-directory: sample-giithub-action
         run: mvn clean compile
 
   build:
@@ -42,7 +42,7 @@ jobs:
           java-version: '11'
           java-package: jdk
       - name: Build and test project
-        working-directory: sample-giithub-action
+#        working-directory: sample-giithub-action
         run: mvn package assembly:single
       - name: Upload Maven build artifact
         uses: actions/upload-artifact@v2
