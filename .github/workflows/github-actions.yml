@@ -60,9 +60,6 @@ jobs:
     needs: build
     name: Publish binary to GitHub Releases
     steps:
-      - uses: actions/checkout@v3
-      - name: Download artifact
-        run: cargo build --release
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
