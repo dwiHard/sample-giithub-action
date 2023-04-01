@@ -54,15 +54,6 @@ jobs:
           ls ${{ github.workspace }}
 #          if other directory is used
 #          path: sample-giithub-action/target/sample-giithub-action.jar
-
-  publish:
-    runs-on: ubuntu-20.04
-    needs: build
-    name: Publish binary to GitHub Releases
-    steps:
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
