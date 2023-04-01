@@ -47,7 +47,7 @@ jobs:
       - name: Upload Maven build artifact
         uses: actions/upload-artifact@v2
         with:
-          name: artifact.jar
+          name: sample-giithub-action.jar
           path: target/sample-giithub-action.jar
 #          if other directory is used
 #          path: sample-giithub-action/target/sample-giithub-action.jar
