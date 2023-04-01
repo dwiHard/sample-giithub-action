@@ -59,6 +59,7 @@ jobs:
     runs-on: ubuntu-20.04
     needs: build
     name: Publish binary to GitHub Releases
+    steps:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
