@@ -11,7 +11,7 @@ jobs:
     name: Java ${{ matrix.java }} compile
     steps:
       - name: Checkout Source Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.4.2
       - name: Setup Java
         uses: actions/setup-java@v2
         with:
@@ -20,7 +20,7 @@ jobs:
           java-version: ${{ matrix.java }}
       - name: Compile the Project
 #        if other directory is used
-#        working-directory: github-actions-java-maven
+        working-directory: sample-giithub-action
         run: mvn clean compile
 
   build:
@@ -28,7 +28,7 @@ jobs:
     needs: compile
     name: Build the Maven Project
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.4.2
       - uses: actions/cache@v2
         with:
           path: ~/.m2/repository
@@ -42,12 +42,12 @@ jobs:
           java-version: '11'
           java-package: jdk
       - name: Build and test project
-#        working-directory: sample-giithub-action
+        working-directory: sample-giithub-action
         run: mvn package assembly:single
       - name: Upload Maven build artifact
         uses: actions/upload-artifact@v2
         with:
-          name: sample-giithub-action.jar
-          path: target/sample-giithub-action.jar
+          name: artifact.jar
+          path: sample-giithub-action/target/Simple-1.0-SNAPSHOT.jar
 #          if other directory is used
 #          path: sample-giithub-action/target/sample-giithub-action.jar
